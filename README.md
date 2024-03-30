@@ -4,3 +4,4 @@
 
 
 ### Github Godot Tutorial: https://www.youtube.com/watch?v=5H4A74FIEtg 
+### Textures and tutorial come from: https://www.youtube.com/watch?v=ntYjl_obUDo&t=843s
