@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://ccum6x0n1y1f4"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_w0q3n"]
+[ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player.tscn" id="2_tc2ca"]
+[ext_resource type="Texture2D" uid="uid://0mlx5f105wjd" path="res://textures/ball.png" id="3_lpcvn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lb4wf"]
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtxfm"]
+size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5wvj"]
+size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
+size = Vector2(1040, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k70vm"]
+size = Vector2(1040, 200)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_w0q3n")
+
+[node name="Player" parent="." instance=ExtResource("2_tc2ca")]
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(304, 272)
+physics_material_override = SubResource("PhysicsMaterial_lb4wf")
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_lpcvn")
+metadata/_edit_lock_ = true
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(740, 180)
+
+[node name="Walls" type="StaticBody2D" parent="Borders"]
+position = Vector2(-740, -180)
+
+[node name="LeftWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(-100, 180)
+shape = SubResource("RectangleShape2D_dtxfm")
+metadata/_edit_lock_ = true
+
+[node name="RightWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(740, 180)
+shape = SubResource("RectangleShape2D_e5wvj")
+metadata/_edit_lock_ = true
+
+[node name="TopWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(320, -100)
+shape = SubResource("RectangleShape2D_07eh2")
+metadata/_edit_lock_ = true
+
+[node name="BottomWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(320, 460)
+shape = SubResource("RectangleShape2D_k70vm")
+metadata/_edit_lock_ = true

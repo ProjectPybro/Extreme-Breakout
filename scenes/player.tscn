@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvl13h7gnrykh"]
+
+[ext_resource type="Texture2D" uid="uid://dsqtnm7xcfqfu" path="res://textures/paddle.png" id="1_ybnwb"]
+
+[node name="Player" type="Node2D"]
+
+[node name="Paddle" type="CharacterBody2D" parent="."]
+position = Vector2(304, 336)
+
+[node name="Sprite2D" type="Sprite2D" parent="Paddle"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_ybnwb")
+metadata/_edit_lock_ = true
