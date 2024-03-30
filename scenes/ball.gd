@@ -16,12 +16,14 @@ func _ready(): # Called when the node enters the scene tree for the first time.
 	
 	speed = rng.randi_range(200, 500) # Number between (and including) 200, 500
 	rotation_speed = rng.randi_range(40, 100)
+	direction_x = rng.randf_range(-1, 1)
 	rotation_direction = rng.randi_range(0, 1)
 	
 	if rotation_direction == 0:
 		rotation_direction = -1 # A very crude way of getting either 1 or -1
+		
 	
-	direction_x = rng.randf_range(-1, 1)
+	modulate = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
 
 func _process(delta):
 	position += Vector2(direction_x, 0) * speed * delta
