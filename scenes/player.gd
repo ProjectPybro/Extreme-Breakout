@@ -5,8 +5,9 @@ extends CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	position = Vector2(320, 300)
-	print("Starting Paddle Position: ", position)
+	var width = get_viewport().get_visible_rect().size[0]
+	position = Vector2(width/2 , 300)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
