@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
 [ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball.tscn" id="4_qkgel"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
-size = Vector2(1040, 200)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtxfm"]
 size = Vector2(200, 360)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e5wvj"]
 size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
+size = Vector2(1040, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k70vm"]
 size = Vector2(1040, 200)
@@ -27,7 +27,6 @@ texture = ExtResource("4_mjr8b")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_tc2ca")]
-collision_mask = 6
 
 [node name="BallList" type="Node2D" parent="."]
 
@@ -37,33 +36,27 @@ position = Vector2(230, 300)
 [node name="Borders" type="Node2D" parent="."]
 position = Vector2(740, 180)
 
-[node name="TopWall" type="StaticBody2D" parent="Borders"]
-position = Vector2(-740, -180)
-
-[node name="TopWall" type="CollisionShape2D" parent="Borders/TopWall"]
-position = Vector2(320, -100)
-shape = SubResource("RectangleShape2D_07eh2")
-metadata/_edit_lock_ = true
-
-[node name="LeftWall" type="StaticBody2D" parent="Borders"]
+[node name="Walls" type="StaticBody2D" parent="Borders"]
 position = Vector2(-740, -180)
 collision_layer = 4
 collision_mask = 7
 
-[node name="LeftWall" type="CollisionShape2D" parent="Borders/LeftWall"]
+[node name="LeftWall" type="CollisionShape2D" parent="Borders/Walls"]
 position = Vector2(-100, 180)
 shape = SubResource("RectangleShape2D_dtxfm")
 metadata/_edit_lock_ = true
 
-[node name="RightWall" type="StaticBody2D" parent="Borders"]
-
-[node name="RightWall" type="CollisionShape2D" parent="Borders/RightWall"]
+[node name="RightWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(740, 180)
 shape = SubResource("RectangleShape2D_e5wvj")
 metadata/_edit_lock_ = true
 
-[node name="BottomWall" type="StaticBody2D" parent="Borders"]
+[node name="TopWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(320, -100)
+shape = SubResource("RectangleShape2D_07eh2")
+metadata/_edit_lock_ = true
 
-[node name="BottomWall" type="CollisionShape2D" parent="Borders/BottomWall"]
-position = Vector2(-420, 280)
+[node name="BottomWall" type="CollisionShape2D" parent="Borders/Walls"]
+position = Vector2(320, 460)
 shape = SubResource("RectangleShape2D_k70vm")
 metadata/_edit_lock_ = true
