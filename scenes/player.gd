@@ -5,6 +5,7 @@ extends CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_physics_process(true)
 	var width = get_viewport().get_visible_rect().size[0]
 	position = Vector2(width/2 , 300)
 	

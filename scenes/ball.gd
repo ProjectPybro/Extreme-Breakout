@@ -8,12 +8,12 @@ func _ready():
 	var rng = RandomNumberGenerator.new()
 	modulate = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
 	
-	direction.x = -1
-	direction.y = -1
+	direction = Vector2(0, -30)
 
 func _physics_process(delta):
-	global_position += direction * speed * delta
-
+	global_position += direction.normalized() * speed * delta
+	# NOTE: Normalised just makes it so no matter what direction you go, it still goes the same speed
+	# Think moving diagonal in doom made you faster
 
 func _on_body_entered(body):
 	if body.name == "LeftWall" or body.name == "RightWall":
@@ -21,6 +21,7 @@ func _on_body_entered(body):
 	elif body.name == "TopWall" or body.name == "BottomWall":
 		direction.y *= -1
 	elif body.name == "Player":
-		direction.y *= -1
+		direction = position - body.find_child("Anchor").get_global_position()
+		# The anchor just stoped us having to do complex maths
 
 	
