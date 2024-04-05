@@ -24,10 +24,10 @@ func _physics_process(delta):
 		
 	move_and_slide() # This deals with wall collision
 	
-	for loop in get_slide_collision_count():
-		var collision = get_slide_collision(loop)
-		if collision.get_collider() is Ball:
-			collision.get_collider().apply_central_impulse(Vector2(10, -50))
+	#for loop in get_slide_collision_count():
+	#	var collision = get_slide_collision(loop)
+		#if collision.get_collider() is Ball:
+			#collision.get_collider().apply_central_impulse(Vector2(10, -50))
 		#	ball.get_collider().apply_central_impulse(ball.get_normal() * 500)
 
 	#var direction = Input.get_vector("left", "right", "up", "down")

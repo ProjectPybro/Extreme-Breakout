@@ -32,7 +32,7 @@ collision_mask = 5
 [node name="BallList" type="Node2D" parent="."]
 
 [node name="Ball" parent="BallList" instance=ExtResource("4_qkgel")]
-position = Vector2(390, 240)
+position = Vector2(320, 240)
 
 [node name="Borders" type="Node2D" parent="."]
 position = Vector2(740, 180)
@@ -73,3 +73,9 @@ collision_mask = 4
 position = Vector2(-420, 280)
 shape = SubResource("RectangleShape2D_k70vm")
 metadata/_edit_lock_ = true
+
+[node name="BallTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
