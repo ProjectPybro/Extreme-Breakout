@@ -18,7 +18,6 @@ func _physics_process(delta):
 	## TODO: Add Rotation to the Balls?
 	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
 
-
 func _on_body_entered(body):
 	if body.name == "LeftWall" or body.name == "RightWall":
 		direction.x *= -1

@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://ccum6x0n1y1f4"]
 
-[ext_resource type="Script" path="res://world.gd" id="1_w0q3n"]
-[ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player.tscn" id="2_tc2ca"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
+[ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
-[ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball.tscn" id="4_qkgel"]
-[ext_resource type="PackedScene" uid="uid://c7n2mnt8qiqs1" path="res://scenes/brick.tscn" id="5_e54y5"]
+[ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="4_qkgel"]
+[ext_resource type="PackedScene" uid="uid://c7n2mnt8qiqs1" path="res://scenes/brick/brick.tscn" id="5_e54y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
 size = Vector2(1040, 200)
@@ -19,7 +19,7 @@ size = Vector2(200, 360)
 size = Vector2(1040, 200)
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_w0q3n")
+script = ExtResource("1_6y0vp")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(270, 80)
