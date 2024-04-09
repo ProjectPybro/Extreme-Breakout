@@ -2,12 +2,13 @@ extends RigidBody2D
 class_name Ball
 
 @export var speed = 300
-var direction = Vector2.ZERO
+@export var direction = Vector2.ZERO
 
 func _ready():
 	var rng = RandomNumberGenerator.new()
 	modulate = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
-	direction = Vector2(0, -30)
+	if direction == Vector2.ZERO:
+		direction = Vector2(0, -30)
 
 func _physics_process(delta):
 	global_position += direction.normalized() * speed * delta
