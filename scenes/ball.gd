@@ -15,7 +15,7 @@ func _physics_process(delta):
 	# NOTE: Normalised just makes it so no matter what direction you go, it still goes the same speed
 	# Think moving diagonal in doom made you faster
 	
-	## TODO: Rotating Balls?
+	## TODO: Add Rotation to the Balls?
 	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
 
 
@@ -33,4 +33,6 @@ func _on_body_entered(body):
 		direction = position - body.get_global_position()
 	elif body is Brick:
 		direction = position - body.get_global_position()
+		## HACK: While ball-brick collision works, it kinda sucks 
+		## as it goes off at weird angles
 	
