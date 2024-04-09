@@ -27,6 +27,4 @@ metadata/_edit_lock_ = true
 shape = SubResource("CircleShape2D_ug2yf")
 debug_color = Color(0.988235, 0, 0.32549, 0.419608)
 
-[node name="Anchor" type="Marker2D" parent="."]
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

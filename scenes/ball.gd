@@ -30,7 +30,7 @@ func _on_body_entered(body):
 		direction = position - body.find_child("Anchor").get_global_position()
 		# The anchor just stoped us having to do complex maths
 	elif body is Ball:
-		direction = position - body.find_child("Anchor").get_global_position()
+		direction = position - body.get_global_position()
 		
 
 	
