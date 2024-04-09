@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccum6x0n1y1f4"]
+[gd_scene load_steps=10 format=3 uid="uid://ccum6x0n1y1f4"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_w0q3n"]
 [ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player.tscn" id="2_tc2ca"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
 [ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball.tscn" id="4_qkgel"]
+[ext_resource type="PackedScene" uid="uid://c7n2mnt8qiqs1" path="res://scenes/brick.tscn" id="5_e54y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
 size = Vector2(1040, 200)
@@ -32,9 +33,14 @@ collision_mask = 5
 [node name="BallList" type="Node2D" parent="."]
 
 [node name="Ball" parent="BallList" instance=ExtResource("4_qkgel")]
-position = Vector2(240, 80)
+position = Vector2(320, 160)
 speed = 100
 direction = Vector2(20, 20)
+
+[node name="BrickList" type="Node2D" parent="."]
+
+[node name="Brick" parent="BrickList" instance=ExtResource("5_e54y5")]
+position = Vector2(90, 80)
 
 [node name="Borders" type="Node2D" parent="."]
 position = Vector2(740, 180)

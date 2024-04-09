@@ -16,6 +16,7 @@ func _physics_process(delta):
 	# Think moving diagonal in doom made you faster
 	
 	## TODO: Rotating Balls?
+	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
 
 
 func _on_body_entered(body):
