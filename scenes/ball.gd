@@ -14,6 +14,8 @@ func _physics_process(delta):
 	global_position += direction.normalized() * speed * delta
 	# NOTE: Normalised just makes it so no matter what direction you go, it still goes the same speed
 	# Think moving diagonal in doom made you faster
+	
+	## TODO: Rotating Balls?
 
 
 func _on_body_entered(body):
