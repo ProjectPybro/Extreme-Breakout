@@ -33,6 +33,7 @@ func _on_body_entered(body):
 		direction = position - body.get_global_position()
 	elif body is Brick:
 		direction = position - body.get_global_position()
-		## HACK: While ball-brick collision works, it kinda sucks 
+		body.remove_health()
+		## FIXME: While ball-brick collision works, it REALLY sucks 
 		## as it goes off at weird angles
 	

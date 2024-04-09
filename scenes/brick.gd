@@ -12,6 +12,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func remove_health():
+	health -= 1
+	if health <= 0:
+			queue_free()
 
 ## TODO: Add a respawning mechanic
 ## TODO: Add different colored bricks wityh different hp's
