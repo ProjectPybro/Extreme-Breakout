@@ -16,7 +16,7 @@ func _on_ball_timer_timeout():
 	# #2) Creates a new instance of the ball
 	var ball = ball_scene.instantiate() 
 	ball.set_position(Vector2(100, 100))
-	## TODO: Randomise the position of the wall
+	## TODO: Randomise the position of the ball
 	## 3) Add ball to the scene tree
 	$BallList.add_child(ball) # Adds the ball to the scene tree
 	## print("Debug: Ball Spawned")
