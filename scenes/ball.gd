@@ -31,6 +31,6 @@ func _on_body_entered(body):
 		# The anchor just stoped us having to do complex maths
 	elif body is Ball:
 		direction = position - body.get_global_position()
-		
-
+	elif body is Brick:
+		direction = position - body.get_global_position()
 	
