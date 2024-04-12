@@ -10,6 +10,18 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	get_node("Score").set_text("Score: 0")
 	update_ball_counter()
+	
+	var level_1 = Level.new() ## Crashes without the .new()
+	level_1.level_number = 1
+	level_1.bricks_per_row = 5
+	level_1.number_of_rows = 5
+	level_1.spacing_between_rows = 4
+	level_1.spacing_between_columns = 4
+	level_1.display_information()
+	
+	## FIXME: Take this code and create a proper level maker. See levels.gd
+	## Use this: https://www.youtube.com/watch?v=4rWW2uvsziM
+	## TODO: Add that link to the readme
 
 func increase_score(value):
 	score += value
