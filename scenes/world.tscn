@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://ccum6x0n1y1f4"]
+[gd_scene load_steps=8 format=3 uid="uid://ccum6x0n1y1f4"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
 [ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
-[ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="4_qkgel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
 size = Vector2(1040, 200)
@@ -30,9 +29,6 @@ metadata/_edit_lock_ = true
 collision_mask = 5
 
 [node name="BallList" type="Node2D" parent="."]
-
-[node name="Ball" parent="BallList" instance=ExtResource("4_qkgel")]
-position = Vector2(100, 220)
 
 [node name="BrickList" type="Node2D" parent="."]
 

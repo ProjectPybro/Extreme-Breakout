@@ -43,21 +43,22 @@ func _on_ball_timer_timeout():
 ## and doesn't need correcting
 ## 3) This gives you the left most X-Coordinate where a brick will start to spawn
 ## 4) Then, just add another brick every width + spacing apart
+## Repeat for columns
 
 func create_level():
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
-	level_1.bricks_per_row = 3
-	level_1.number_of_rows = 5
+	level_1.bricks_per_row = 7
+	level_1.number_of_columns = 5
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
 	level_1.display_information()
 	
 	## 1)
-	var middle_of_screen_x_axis = (get_viewport().get_visible_rect().size[0] / 2)
-	var brick_scale = 2
-	var brick_length = 32 * brick_scale ## I
-	var brick_height = 16 * brick_scale
+	var middle_of_screen_x_axis : float = (get_viewport().get_visible_rect().size[0] / 2)
+	var brick_scale: float = 2.0
+	var brick_length: float = 32.0 * brick_scale ## I
+	var brick_height: float = 16.0 * brick_scale
 
 	
 	if level_1.bricks_per_row <= 0:
@@ -66,24 +67,27 @@ func create_level():
 		assert(false, "Less than 1 brick per row isn't possible to display.")
 	
 	## 2) and 3)
-	var starting_x_coordinate = middle_of_screen_x_axis	
-	var offset_x = level_1.bricks_per_row - 1
+	var starting_x_coordinate : float = middle_of_screen_x_axis	
+	var offset_x : float = level_1.bricks_per_row - 1
 	offset_x *= (brick_length / 2) + (level_1.spacing_between_rows / 2)
 	starting_x_coordinate -= offset_x
 	
-	var starting_y_corrdinate = 100 ## This is just a placeholder number
+	var starting_y_corrdinate : float = 100.0 ## This is just a placeholder number
 	
 	
 	## 4)
-	var current_x_corrdinate = starting_x_coordinate
-	var current_y_corrdinate = starting_y_corrdinate
+	var current_x_corrdinate : float = starting_x_coordinate
+	var current_y_corrdinate : float = starting_y_corrdinate
 	
-	for row in level_1.bricks_per_row:
-		var new_brick = brick_scene.instantiate()
-		new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
-		$BrickList.add_child(new_brick)
-		
-		current_x_corrdinate += brick_length + level_1.spacing_between_rows
+	for columns in level_1.number_of_columns:
+		for row in level_1.bricks_per_row:
+			var new_brick = brick_scene.instantiate()
+			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
+			$BrickList.add_child(new_brick)
+			
+			current_x_corrdinate += brick_length + level_1.spacing_between_rows
+		current_x_corrdinate = starting_x_coordinate
+		current_y_corrdinate += brick_height + level_1.spacing_between_columns
 	
 	
 	## FIXME: Take this code and create a proper level maker. See levels.gd
