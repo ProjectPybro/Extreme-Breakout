@@ -49,9 +49,10 @@ func create_level():
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
 	level_1.bricks_per_row = 9
-	level_1.number_of_columns = 3
+	level_1.number_of_columns = 5
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
+	level_1.offset_every_second_column = true
 	level_1.display_information()
 	
 	## 1)
@@ -69,28 +70,45 @@ func create_level():
 	## 2) and 3)
 	var starting_x_coordinate : float = middle_of_screen_x_axis	
 	var offset_x : float = level_1.bricks_per_row - 1
-	offset_x *= (brick_length / 2) + (level_1.spacing_between_rows / 2)
+	var per_brick_offset_x = (brick_length / 2) + (level_1.spacing_between_rows / 2) 
+	# Saved for later to be used for offsetting every second column
+	
+	offset_x *= per_brick_offset_x
 	starting_x_coordinate -= offset_x
 	
-	var starting_y_corrdinate : float = 100.0 ## This is just a placeholder number
+	var starting_y_corrdinate : float = 100.0 ## FIXME This is just a placeholder number. Make it based on screen size
 	
 	
 	## 4)
 	var current_x_corrdinate : float = starting_x_coordinate
 	var current_y_corrdinate : float = starting_y_corrdinate
+	var bricks_in_row_offset := 0 ## Used when offsetting the bricks every row
 	
 	for columns in level_1.number_of_columns:
-		for row in level_1.bricks_per_row:
+				
+		for row in (level_1.bricks_per_row - bricks_in_row_offset):
 			var new_brick = brick_scene.instantiate()
 			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
 			$BrickList.add_child(new_brick)
 			
 			current_x_corrdinate += brick_length + level_1.spacing_between_rows
+		
 		current_x_corrdinate = starting_x_coordinate
 		current_y_corrdinate += brick_height + level_1.spacing_between_columns
+		
+		if level_1.offset_every_second_column == true:
+			if (int(columns)+1) % 2 == 1:
+				bricks_in_row_offset = 1
+				current_x_corrdinate += per_brick_offset_x
+			else:
+				bricks_in_row_offset = 0
+				
 	
 	
-	## FIXME: Take this code and create a proper level maker. See levels.gd
+	## FIXME: Remove level_1, let it pass in any level
+	## TODO: Make this look less of a nightmare
+	
+	## TODO: Add a logo
 
 
 
