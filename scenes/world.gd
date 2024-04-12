@@ -48,8 +48,8 @@ func _on_ball_timer_timeout():
 func create_level():
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
-	level_1.bricks_per_row = 7
-	level_1.number_of_columns = 5
+	level_1.bricks_per_row = 9
+	level_1.number_of_columns = 3
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
 	level_1.display_information()
