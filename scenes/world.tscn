@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccum6x0n1y1f4"]
+[gd_scene load_steps=9 format=3 uid="uid://ccum6x0n1y1f4"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
 [ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
+[ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="4_c5lwi"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
@@ -29,6 +30,12 @@ metadata/_edit_lock_ = true
 collision_mask = 5
 
 [node name="BallList" type="Node2D" parent="."]
+
+[node name="Ball" parent="BallList" instance=ExtResource("4_c5lwi")]
+position = Vector2(190, 50)
+
+[node name="Ball2" parent="BallList" instance=ExtResource("4_c5lwi")]
+position = Vector2(470, 50)
 
 [node name="BrickList" type="Node2D" parent="."]
 
@@ -73,7 +80,7 @@ shape = SubResource("RectangleShape2D_k70vm")
 metadata/_edit_lock_ = true
 
 [node name="BallTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 0.504
 
 [node name="Score" type="Label" parent="."]
 offset_left = 20.0
@@ -85,12 +92,21 @@ text = "Score: Failed
 "
 
 [node name="BallCounter" type="Label" parent="."]
-offset_left = 26.0
+offset_left = 20.0
 offset_top = 40.0
-offset_right = 217.0
+offset_right = 211.0
 offset_bottom = 63.0
 theme_override_colors/font_color = Color(0.870588, 0.34902, 0, 1)
 text = "Balls: Failed
+"
+
+[node name="BrickCounter" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 211.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(0.870588, 0.34902, 0, 1)
+text = "Bricks: Failed
 "
 
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

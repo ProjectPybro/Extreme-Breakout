@@ -6,21 +6,24 @@ var score := 0
 var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
 var rng = RandomNumberGenerator.new()
+var number_of_bricks_alive := 0
 
 
 func _ready():
 	get_node("Score").set_text("Score: 0")
 	update_ball_counter()
+	update_brick_counter()
 	
 	# Basic Level 1
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
-	level_1.bricks_per_row = 9
-	level_1.number_of_columns = 5
+	level_1.bricks_per_row = 2
+	level_1.number_of_columns = 1
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
-	level_1.offset_every_second_column = true
+	level_1.offset_every_second_column = false
 	create_level(level_1)
+	
 	
 	
 
@@ -32,6 +35,9 @@ func update_ball_counter():
 	var number_of_balls = get_node("BallList").get_child_count()
 	$BallCounter.set_text("Balls: "+str(number_of_balls))
 	# Note: Both get_node("Node") and $Node do the same thing
+	
+func update_brick_counter():
+	$BrickCounter.set_text("Bricks: "+str(number_of_bricks_alive))
 	
 
 func _on_ball_timer_timeout():
@@ -63,7 +69,7 @@ func create_level(level: Level):
 	var brick_scale: float = 2.0
 	var brick_length: float = 32.0 * brick_scale ## I
 	var brick_height: float = 16.0 * brick_scale
-
+	
 	
 	if level.bricks_per_row <= 0:
 		print("\n\nERROR")
@@ -71,6 +77,8 @@ func create_level(level: Level):
 		assert(false, "Less than 1 brick per row isn't possible to display.")
 	
 	## 2) and 3)
+	number_of_bricks_alive = 0
+	
 	var starting_x_coordinate : float = middle_of_screen_x_axis	
 	var offset_x : float = level.bricks_per_row - 1
 	var per_brick_offset_x = (brick_length / 2) + (level.spacing_between_rows / 2) 
@@ -88,12 +96,13 @@ func create_level(level: Level):
 	var bricks_in_row_offset := 0 ## Used when offsetting the bricks every row
 	
 	for columns in level.number_of_columns:
-				
+		
 		for row in (level.bricks_per_row - bricks_in_row_offset):
 			var new_brick = brick_scene.instantiate()
 			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
+			new_brick.brick_destroyed.connect(on_brick_destroyed)
 			$BrickList.add_child(new_brick)
-			
+			number_of_bricks_alive += 1
 			current_x_corrdinate += brick_length + level.spacing_between_rows
 		
 		current_x_corrdinate = starting_x_coordinate
@@ -106,11 +115,24 @@ func create_level(level: Level):
 			else:
 				bricks_in_row_offset = 0
 	
+	update_brick_counter()
+	
 	## TODO: Make this look less of a nightmare
 	
 	## TODO: Add a logo
+	
+	
+func on_brick_destroyed():
+	number_of_bricks_alive -= 1
+	update_brick_counter()
+	if number_of_bricks_alive <= 0:
+		print("GAME OVER")
 
+## NOTE: Because queue_free() only marks the brick for deletion when its safe to do so,
+## $BrickList.get_child_count() still counts bricks that will be deleted next frame.
+## This could be fixed by overcounting by one, but if two bricks are destroyed on the same frame 
+## then your fucked.
 
-
-
+## HACK: What this means is that bricks spawned in manually won't work. This sucks, but I can't
+## be arsed trying for hours to find a solution.
 
