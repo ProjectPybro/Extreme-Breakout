@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://clhrr3xrukfb4"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 370.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="MarginContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.34902, 0, 1)
+text = "Score: Failed
+"
+
+[node name="BallCounter" type="Label" parent="MarginContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.34902, 0, 1)
+text = "Balls: Failed
+"
+
+[node name="BrickCounter" type="Label" parent="MarginContainer/Labels"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.870588, 0.34902, 0, 1)
+text = "Bricks: Failed
+"

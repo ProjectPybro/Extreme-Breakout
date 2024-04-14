@@ -10,18 +10,19 @@ var number_of_bricks_alive := 0
 
 
 func _ready():
-	get_node("Score").set_text("Score: 0")
+	
+	$UI/MarginContainer/Labels/Score.set_text("Score: 0")
 	update_ball_counter()
 	update_brick_counter()
 	
 	# Basic Level 1
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
-	level_1.bricks_per_row = 2
-	level_1.number_of_columns = 1
+	level_1.bricks_per_row = 9
+	level_1.number_of_columns = 5
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
-	level_1.offset_every_second_column = false
+	level_1.offset_every_second_column = true
 	create_level(level_1)
 	
 	
@@ -33,14 +34,14 @@ func increase_score(value):
 	
 func update_ball_counter():
 	var number_of_balls = get_node("BallList").get_child_count()
-	$BallCounter.set_text("Balls: "+str(number_of_balls))
+	$UI/MarginContainer/Labels/BallCounter.set_text("Balls: "+str(number_of_balls))
 	# Note: Both get_node("Node") and $Node do the same thing
 	
 func update_brick_counter():
-	$BrickCounter.set_text("Bricks: "+str(number_of_bricks_alive))
+	$UI/MarginContainer/Labels/BrickCounter.set_text("Bricks: "+str(number_of_bricks_alive))
 	
 
-func _on_ball_timer_timeout():
+func _on_ball_timer_timeout():	
 	## 2) Creates a new instance of the ball
 	var ball = ball_scene.instantiate() 
 	var random_x_position = rng.randf_range(100, 500)
@@ -67,7 +68,7 @@ func create_level(level: Level):
 	## 1)
 	var middle_of_screen_x_axis : float = (get_viewport().get_visible_rect().size[0] / 2)
 	var brick_scale: float = 2.0
-	var brick_length: float = 32.0 * brick_scale ## I
+	var brick_length: float = 32.0 * brick_scale 
 	var brick_height: float = 16.0 * brick_scale
 	
 	
