@@ -11,7 +11,17 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	get_node("Score").set_text("Score: 0")
 	update_ball_counter()
-	create_level()
+	
+	# Basic Level 1
+	var level_1 = Level.new() ## Crashes without the .new()
+	level_1.level_number = 1
+	level_1.bricks_per_row = 9
+	level_1.number_of_columns = 5
+	level_1.spacing_between_rows = 4
+	level_1.spacing_between_columns = 4
+	level_1.offset_every_second_column = true
+	create_level(level_1)
+	
 	
 
 func increase_score(value):
@@ -45,15 +55,8 @@ func _on_ball_timer_timeout():
 ## 4) Then, just add another brick every width + spacing apart
 ## Repeat for columns
 
-func create_level():
-	var level_1 = Level.new() ## Crashes without the .new()
-	level_1.level_number = 1
-	level_1.bricks_per_row = 9
-	level_1.number_of_columns = 5
-	level_1.spacing_between_rows = 4
-	level_1.spacing_between_columns = 4
-	level_1.offset_every_second_column = true
-	level_1.display_information()
+func create_level(level: Level):
+	level.display_information()
 	
 	## 1)
 	var middle_of_screen_x_axis : float = (get_viewport().get_visible_rect().size[0] / 2)
@@ -62,16 +65,16 @@ func create_level():
 	var brick_height: float = 16.0 * brick_scale
 
 	
-	if level_1.bricks_per_row <= 0:
+	if level.bricks_per_row <= 0:
 		print("\n\nERROR")
-		level_1.display_information()
+		level.display_information()
 		assert(false, "Less than 1 brick per row isn't possible to display.")
 	
 	## 2) and 3)
 	var starting_x_coordinate : float = middle_of_screen_x_axis	
-	var offset_x : float = level_1.bricks_per_row - 1
-	var per_brick_offset_x = (brick_length / 2) + (level_1.spacing_between_rows / 2) 
-	# Saved for later to be used for offsetting every second column
+	var offset_x : float = level.bricks_per_row - 1
+	var per_brick_offset_x = (brick_length / 2) + (level.spacing_between_rows / 2) 
+	# per_brick_offset_x: Saved for later to be used for offsetting every second column
 	
 	offset_x *= per_brick_offset_x
 	starting_x_coordinate -= offset_x
@@ -84,28 +87,25 @@ func create_level():
 	var current_y_corrdinate : float = starting_y_corrdinate
 	var bricks_in_row_offset := 0 ## Used when offsetting the bricks every row
 	
-	for columns in level_1.number_of_columns:
+	for columns in level.number_of_columns:
 				
-		for row in (level_1.bricks_per_row - bricks_in_row_offset):
+		for row in (level.bricks_per_row - bricks_in_row_offset):
 			var new_brick = brick_scene.instantiate()
 			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
 			$BrickList.add_child(new_brick)
 			
-			current_x_corrdinate += brick_length + level_1.spacing_between_rows
+			current_x_corrdinate += brick_length + level.spacing_between_rows
 		
 		current_x_corrdinate = starting_x_coordinate
-		current_y_corrdinate += brick_height + level_1.spacing_between_columns
+		current_y_corrdinate += brick_height + level.spacing_between_columns
 		
-		if level_1.offset_every_second_column == true:
+		if level.offset_every_second_column == true:
 			if (int(columns)+1) % 2 == 1:
 				bricks_in_row_offset = 1
 				current_x_corrdinate += per_brick_offset_x
 			else:
 				bricks_in_row_offset = 0
-				
 	
-	
-	## FIXME: Remove level_1, let it pass in any level
 	## TODO: Make this look less of a nightmare
 	
 	## TODO: Add a logo
