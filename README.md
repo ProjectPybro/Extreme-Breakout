@@ -10,6 +10,7 @@
 #### Ball Asset comes from Kenny Assets: https://kenney.nl/assets/rolling-ball-assets
 #### Brick Level Maker was inspired by: https://www.youtube.com/watch?v=4rWW2uvsziM
 #### Brick breaking mechanic also taken from that.
+#### Font: Rainy Hearts: https://www.dafont.com/rainyhearts.font
 
 ### Addons
 #### TODO Manager

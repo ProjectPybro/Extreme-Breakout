@@ -68,7 +68,7 @@ func create_level(level: Level):
 	## 1)
 	var middle_of_screen_x_axis : float = (get_viewport().get_visible_rect().size[0] / 2)
 	var brick_scale: float = 2.0
-	var brick_length: float = 32.0 * brick_scale 
+	var brick_length: float = 32.0 * brick_scale 	
 	var brick_height: float = 16.0 * brick_scale
 	
 	
