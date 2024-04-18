@@ -11,7 +11,7 @@ var number_of_bricks_alive := 0
 
 func _ready():
 	
-	$UI/MarginContainer/Labels/Score.set_text("Score: 0")
+	increase_score(0)
 	update_ball_counter()
 	update_brick_counter()
 	
