@@ -134,6 +134,6 @@ func on_brick_destroyed():
 ## This could be fixed by overcounting by one, but if two bricks are destroyed on the same frame 
 ## then your fucked.
 
-## HACK: What this means is that bricks spawned in manually won't work. This sucks, but I can't
-## be arsed trying for hours to find a solution.
+## HACK: What this means is that bricks spawned in manually won't work when it comes to brick counting. 
+## This sucks, but I can't be arsed trying for hours to find a solution.
 
