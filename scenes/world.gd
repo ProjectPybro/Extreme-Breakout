@@ -30,7 +30,7 @@ func _ready():
 
 func increase_score(value):
 	score += value
-	get_node("Score").set_text("Score: "+str(score))
+	$UI/MarginContainer/Labels/Score.set_text("Score: "+str(score))
 	
 func update_ball_counter():
 	var number_of_balls = get_node("BallList").get_child_count()
@@ -123,9 +123,10 @@ func create_level(level: Level):
 	## TODO: Add a logo
 	
 	
-func on_brick_destroyed():
+func on_brick_destroyed(worth_in_points):
 	number_of_bricks_alive -= 1
 	update_brick_counter()
+	increase_score(worth_in_points)
 	if number_of_bricks_alive <= 0:
 		print("GAME OVER")
 

@@ -20,12 +20,12 @@ func remove_health():
 	health -= 1
 	if health <= 0:
 		queue_free()
-		brick_destroyed.emit()
+		brick_destroyed.emit(worth_in_points)
 
 
-## TODO: When brick dies, send a signal to the World node to increase the score
 ## TODO: Add a respawning mechanic
 ## TODO: Add different colored bricks with different hp's
+## TODO: Brick Spawner should spawn different colored bricks
 ## TODO: Do we want composition or is that too much?
 	
 	
