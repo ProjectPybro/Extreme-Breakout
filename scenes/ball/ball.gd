@@ -16,16 +16,14 @@ func _physics_process(delta):
 	var collision = move_and_collide(direction.normalized() * speed * delta)
 	if not collision: ## If no collision, end
 		return
-	else:
-		direction = collision.get_normal()
-		if direction.x < 0.01 and direction.x > -0.01:
-			direction.x = 0
-		if direction.y < 0.01 and direction.y > -0.01:
-			direction.y = 0
-		## HACK: This fixed a bug where the collision randomly gets a 0.0001... to its y direction
-		## I have no idea why this happens, but this fixes it, so I ain't bothered.
+	
+
+	direction = direction.bounce(collision.get_normal())
+
+	
+	
+	## TODO: Update README with bounce
 		
-		print(direction)
 	
 	# apply_central_force(direction.normalized() * speed)
 	# global_position += direction.normalized() * speed * delta

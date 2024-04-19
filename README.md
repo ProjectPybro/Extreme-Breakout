@@ -12,6 +12,9 @@
 #### Brick breaking mechanic also taken from that.
 #### Font: Rainy Hearts: https://www.dafont.com/rainyhearts.font
 
+#### Ball physics based on this: https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html#reflection 
+#### If your making a breakout type game, use the inbuilt bounce() in Vector2 like I did!
+
 ### Addons
 #### TODO Manager
 ##### https://godotengine.org/asset-library/asset/1327
