@@ -34,65 +34,10 @@ collision_mask = 5
 
 [node name="BallList" type="Node2D" parent="."]
 
-[node name="Ball7" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(370, 30)
-start_speed = 200.0
-starting_direction = Vector2(-0.5, -1)
-
-[node name="Ball8" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(320, 50)
-start_speed = 200.0
-starting_direction = Vector2(-1, -0.5)
-
-[node name="Ball9" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(370, 70)
-start_speed = 200.0
-starting_direction = Vector2(-1, -1)
-
-[node name="Ball2" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(450, 60)
-start_speed = 200.0
-starting_direction = Vector2(1, 1)
-
-[node name="Ball3" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(210, 50)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
-[node name="Ball" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(260, 70)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
-[node name="Ball4" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(160, 70)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
 [node name="Ball6" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(210, 90)
+position = Vector2(238, 90)
 start_speed = 200.0
 starting_direction = Vector2(1, -0.5)
-
-[node name="Ball5" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(130, 70)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
-[node name="Ball10" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(290, 20)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
-[node name="Ball11" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(240, 40)
-start_speed = 200.0
-starting_direction = Vector2(1, -0.5)
-
-[node name="Ball12" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(290, 60)
-start_speed = 200.0
-starting_direction = Vector2(-1, 0.5)
 
 [node name="BrickList" type="Node2D" parent="."]
 

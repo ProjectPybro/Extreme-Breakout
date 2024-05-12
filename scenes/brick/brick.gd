@@ -17,6 +17,9 @@ func _process(delta):
 	pass
 	
 func remove_health():
+	if is_queued_for_deletion() == true:
+		return ## I think this fixes a bug where the brick counter would go negative
+		
 	health -= 1
 	if health <= 0:
 		queue_free()
