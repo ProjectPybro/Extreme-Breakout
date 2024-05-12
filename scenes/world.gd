@@ -16,13 +16,13 @@ func _ready():
 	update_brick_counter()
 	
 	# Basic Level 1
-	#var level_1 = Level.new() ## Crashes without the .new()
-	#level_1.level_number = 1
-	#level_1.bricks_per_row = 9
-	#level_1.number_of_columns = 5
-	#level_1.spacing_between_rows = 4
-	#level_1.spacing_between_columns = 4
-	#level_1.offset_every_second_column = true
+	var level_1 = Level.new() ## Crashes without the .new()
+	level_1.level_number = 1
+	level_1.bricks_per_row = 9
+	level_1.number_of_columns = 5
+	level_1.spacing_between_rows = 4
+	level_1.spacing_between_columns = 4
+	level_1.offset_every_second_column = true
 	#create_level(level_1)
 	
 	

@@ -1,73 +1,87 @@
-extends RigidBody2D
+extends CharacterBody2D
 class_name Ball
 
-@export var speed = 100
-@export var direction = Vector2.ZERO
+@export var start_speed = 100.0
+@export var current_speed = 0.0
+@export var max_speed = 500.0
+@export var starting_direction = Vector2.ZERO
+@export var velocity_watcher_normalized = Vector2.ZERO
 
 func _ready():
+	change_colour()
+	current_speed = start_speed
+	
+	if starting_direction == Vector2.ZERO:
+		velocity = Vector2(1, 0).normalized()
+	else:
+		velocity = starting_direction.normalized()
+	
+	velocity_watcher_normalized = velocity.normalized()
+		
+func change_colour():
 	var rng = RandomNumberGenerator.new()
 	modulate = Color(rng.randf_range(0, 1), rng.randf_range(0, 1), rng.randf_range(0, 1))
-	if direction == Vector2.ZERO:
-		direction = Vector2(0, -1)
-	ball_physics()
+
 
 func _physics_process(delta):
-	#linear_velocity = Vector2(0, 0)
-	var collision = move_and_collide(direction.normalized() * speed * delta)
-	if not collision: ## If no collision, end
+	var collision = move_and_collide(velocity.normalized() * current_speed * delta)
+	if collision == null:
 		return
 	
-
-	direction = direction.bounce(collision.get_normal())
-
+	var collision_collider = collision.get_collider()
+	
+	if collision_collider.name == "BottomWall":
+		collision_with_bottom_wall(collision)
+		return
+	
+	elif collision_collider.name == "Player":
+		velocity = position - collision_collider.find_child("Anchor").get_global_position()
+		return
+		## The anchor just stops me having to do complex maths
+	
+	elif collision_collider is Brick:
+		collision.get_collider().call("remove_health")
+	
+	basic_reflect_collision(collision)
 	
 	
-	## TODO: Update README with bounce
+func collision_with_bottom_wall(collision):
+	queue_free()
+	## FIXME: This should only happen when the ball has fully left the screen
+	## FIXME: The ball counter isn't updating
+	
+func basic_reflect_collision(collision):
+	var reflect = collision.get_remainder().bounce(collision.get_normal())
+	velocity = velocity.bounce(collision.get_normal())
+	velocity = velocity.normalized()
+	
+	if velocity.x >= -0.01 and velocity.x <= 0.01:
+		velocity.x = 0
+	if velocity.y >= -0.01 and velocity.y <= 0.01:
+		velocity.y = 0
 		
+	move_and_collide(reflect)
+	velocity_watcher_normalized = velocity.normalized()
 	
-	# apply_central_force(direction.normalized() * speed)
-	# global_position += direction.normalized() * speed * delta
-	# NOTE: Normalised just makes it so no matter what direction you go, it still goes the same speed
-	# Think moving diagonal in doom made you faster
+	## HACK: So, the collisions aren't 100% accurate, so a collision that should have a velocity of
+	## (1.0, 0.0), might have a velocity of (1.0, 0.002). This tiny 0.002 will cause it go
+	## go completely different direction the next time it bounces.
+	## For 99.9% of cases, this wont matter, but if I'm doing a newton's cradle type sincaro, 
+	## it completely breaks. So, this is just a little bandaid fix as a complete fix is more 
+	## trouble than its worth.
 	
+	## Just NOTE that it is not a perfect solution, and still fails after a while
+	## if the balls are moving too fast.
+	
+	
+	## NOTE: So, if two balls of different speeds hit each other, their speeds should be swapped
+	## However, since both balls have the collision, how do you swap them?
+	## You could just used the inbuild ID system, but since sometimes only one ball registers the hit
+	## (If a faster ball hits a slower one when they are both moving the same direction, 
+	## The slower balls "move and collide" doesn't register the collision.
+
+	## BUG: Sometimes the balls collide for 2 frames in a row, which leads to weird stuttering effect	
+	
+	## TODO: Update README with bounce		
 	## TODO: Add Rotation to the Balls?
 	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
-	
-
-func ball_physics():
-	print(linear_velocity)
-	#apply_central_force(direction.normalized() * speed * 100)
-	
-func _on_body_entered(body):
-	pass
-	#if body.name == "LeftWall" or body.name == "RightWall":
-		#direction.x *= -1
-		#ball_physics()
-		#
-	#elif body.name == "TopWall" or body.name == "BottomWall":
-		#direction.y *= -1
-		#ball_physics()
-	
-	#elif body.name == "BottomWall":
-		#queue_free() # Removes the ball from the scene
-		
-		
-		
-	#if body.name == "LeftWall" or body.name == "RightWall":
-		#direction.x *= -1
-	#elif body.name == "TopWall":
-		#direction.y *= -1
-	#elif body.name == "BottomWall":
-		#queue_free() # Removes the ball from the scene
-	#elif body.name == "Player":
-		#direction = position - body.find_child("Anchor").get_global_position()
-		## The anchor just stoped us having to do complex maths
-	#elif body is Ball:
-		#pass
-		###direction = position - body.get_global_position()
-	#elif body is Brick:
-		#direction = position - body.get_global_position()
-		#body.remove_health()
-		### FIXME: While ball-brick collision works, it REALLY sucks 
-		### as it goes off at weird angles
-	

@@ -1,0 +1,227 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccum6x0n1y1f4"]
+
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
+[ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
+[ext_resource type="PackedScene" uid="uid://clhrr3xrukfb4" path="res://scenes/ui/ui.tscn" id="4_jirco"]
+[ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
+[ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="5_8dhqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
+size = Vector2(1040, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtxfm"]
+size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5wvj"]
+size = Vector2(200, 360)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k70vm"]
+size = Vector2(1040, 200)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_6y0vp")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(270, 80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_mjr8b")
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("4_jirco")]
+
+[node name="Player" parent="." instance=ExtResource("2_tc2ca")]
+collision_mask = 5
+
+[node name="BallList" type="Node2D" parent="."]
+
+[node name="Ball5" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(400, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball6" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(400, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball7" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(400, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball8" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(160, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball9" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(160, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball10" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(160, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball11" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(480, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball12" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(480, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball13" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(480, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball14" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(560, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball15" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(560, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball16" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(560, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball17" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(80, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball18" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(80, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball19" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(80, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball2" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(240, 80)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball3" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(240, 160)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="Ball4" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(240, 230)
+start_speed = 200.0
+current_speed = null
+max_speed = null
+starting_direction = Vector2(0, 1)
+velocity_watcher_normalized = null
+
+[node name="BrickList" type="Node2D" parent="."]
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(740, 180)
+
+[node name="TopWall" type="StaticBody2D" parent="Borders"]
+position = Vector2(-740, -180)
+collision_layer = 4
+collision_mask = 4
+
+[node name="TopWall" type="CollisionShape2D" parent="Borders/TopWall"]
+position = Vector2(320, -100)
+shape = SubResource("RectangleShape2D_07eh2")
+metadata/_edit_lock_ = true
+
+[node name="LeftWall" type="StaticBody2D" parent="Borders"]
+position = Vector2(-740, -180)
+collision_layer = 4
+collision_mask = 4
+
+[node name="LeftWall" type="CollisionShape2D" parent="Borders/LeftWall"]
+position = Vector2(-100, 180)
+shape = SubResource("RectangleShape2D_dtxfm")
+metadata/_edit_lock_ = true
+
+[node name="RightWall" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="RightWall" type="CollisionShape2D" parent="Borders/RightWall"]
+shape = SubResource("RectangleShape2D_e5wvj")
+metadata/_edit_lock_ = true
+
+[node name="BottomWall" type="StaticBody2D" parent="Borders"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="BottomWall" type="CollisionShape2D" parent="Borders/BottomWall"]
+position = Vector2(-420, 280)
+shape = SubResource("RectangleShape2D_k70vm")
+metadata/_edit_lock_ = true
+
+[node name="BallTimer" type="Timer" parent="."]
+wait_time = 0.504
+one_shot = true
+
+[connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]

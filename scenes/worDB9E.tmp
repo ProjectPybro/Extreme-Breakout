@@ -34,10 +34,20 @@ collision_mask = 5
 
 [node name="BallList" type="Node2D" parent="."]
 
-[node name="Ball" parent="BallList" instance=ExtResource("5_8dhqr")]
-position = Vector2(320, 80)
+[node name="Ball2" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(400, 160)
 start_speed = 200.0
-starting_direction = Vector2(0, 1)
+starting_direction = Vector2(-1, 0)
+
+[node name="Ball3" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(240, 160)
+start_speed = 200.0
+starting_direction = Vector2(1, 0)
+
+[node name="Ball4" parent="BallList" instance=ExtResource("5_8dhqr")]
+position = Vector2(160, 160)
+start_speed = 200.0
+starting_direction = Vector2(1, 0)
 
 [node name="BrickList" type="Node2D" parent="."]
 
