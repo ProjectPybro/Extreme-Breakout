@@ -28,26 +28,26 @@ func _physics_process(delta):
 	if collision == null:
 		return
 	
-	var collision_collider = collision.get_collider()
-	
-	if collision_collider.name == "BottomWall":
+	if collision.get_collider().name == "BottomWall":
 		collision_with_bottom_wall(collision)
 		return
 	
-	elif collision_collider.name == "Player":
-		velocity = position - collision_collider.find_child("Anchor").get_global_position()
+	elif collision.get_collider().name == "Player":
+		collision_with_player(collision)
 		return
-		## The anchor just stops me having to do complex maths
 	
-	elif collision_collider is Brick:
+	elif collision.get_collider() is Brick:
 		collision.get_collider().call("remove_health")
 	
 	basic_reflect_collision(collision)
 	
+func collision_with_player(collision):
+	velocity = position - collision.get_collider().find_child("Anchor").get_global_position()
+	## The anchor just stops me having to do complex maths while still giving decent results
 	
 func collision_with_bottom_wall(collision):
 	queue_free()
-	## FIXME: This should only happen when the ball has fully left the screen
+	## FIXME: This should only happen when the ball has FULLY left the screen
 	## FIXME: The ball counter isn't updating
 	
 func basic_reflect_collision(collision):

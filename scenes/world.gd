@@ -23,7 +23,7 @@ func _ready():
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
 	level_1.offset_every_second_column = true
-	create_level(level_1)
+	#create_level(level_1)
 	
 	
 	
