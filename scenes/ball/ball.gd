@@ -79,7 +79,7 @@ func basic_reflect_collision(collision):
 	## (If a faster ball hits a slower one when they are both moving the same direction, 
 	## The slower balls "move and collide" doesn't register the collision.
 
-	## BUG: Sometimes the balls collide for 2 frames in a row, which leads to weird stuttering effect	
+	## BUG: Sometimes the balls collide for 2 frames in a row, which leads to weird stuttering effect
 	
 	## TODO: Update README with bounce		
 	## TODO: Add Rotation to the Balls?

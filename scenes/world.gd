@@ -137,3 +137,6 @@ func create_level(level: Level):
 func on_brick_destroyed(worth_in_points):
 	update_brick_counter()
 	increase_score(worth_in_points)
+	
+	
+## TODO: Start making versions in the Godot Project. Think about what you want for the 1.0 release.

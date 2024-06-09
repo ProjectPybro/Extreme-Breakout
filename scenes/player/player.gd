@@ -18,3 +18,6 @@ func _physics_process(delta):
 		position += Vector2(1, 0) * speed * delta
 		
 	move_and_slide() # This deals with wall collision
+	
+	## BUG: Sometimes the ball can be dragged across the screen by the paddle if it hits a moving paddle
+	## if it hits a moving paddle to the side. Probally move_and_slide's fault.
