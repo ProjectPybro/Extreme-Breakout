@@ -54,7 +54,8 @@ func update_brick_counter():
 			bricks_not_queued_for_deletion += 1
 	$UI/MarginContainer/Labels/BrickCounter.set_text("Bricks: "+str(bricks_not_queued_for_deletion))
 	
-## HACK: I don't know if this is the most efficent way to do this, but it works well enough.
+## HACK: I don't know if this is the most efficent way to do this, 
+## but is more reliable than other methods.
 
 func _on_ball_timer_timeout():
 	## 2) Creates a new instance of the ball
@@ -132,19 +133,7 @@ func create_level(level: Level):
 	update_brick_counter()
 	
 	## TODO: Make this look less of a nightmare
-	## TODO: Add a logo
-	
 	
 func on_brick_destroyed(worth_in_points):
 	update_brick_counter()
 	increase_score(worth_in_points)
-
-
-## NOTE: Because queue_free() only marks the brick for deletion when its safe to do so,
-## $BrickList.get_child_count() still counts bricks that will be deleted next frame.
-## This could be fixed by overcounting by one, but if two bricks are destroyed on the same frame 
-## then your fucked.
-
-## HACK: What this means is that bricks spawned in manually won't work when it comes to brick counting. 
-## This sucks, but I can't be arsed trying for hours to find a solution.
-
