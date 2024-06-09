@@ -1,17 +1,16 @@
 extends Node2D
 
+# 1) Load the scene
 var score := 0
 
-# 1) Load the scene
 var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
 var rng = RandomNumberGenerator.new()
-var number_of_bricks_alive := 0
 
 
 func _ready():
 	
-	increase_score(0)
+	set_score(0)
 	update_ball_counter()
 	update_brick_counter()
 	
@@ -23,25 +22,41 @@ func _ready():
 	level_1.spacing_between_rows = 4
 	level_1.spacing_between_columns = 4
 	level_1.offset_every_second_column = true
-	#create_level(level_1)
-	
-	
-	
+	create_level(level_1)
 
-func increase_score(value):
+func set_score(value: int):
+	score = value
+	$UI/MarginContainer/Labels/Score.set_text("Score: "+str(score))
+
+func increase_score(value: int):
 	score += value
 	$UI/MarginContainer/Labels/Score.set_text("Score: "+str(score))
 	
+func get_score():
+	return score
+	
 func update_ball_counter():
-	var number_of_balls = get_node("BallList").get_child_count()
-	$UI/MarginContainer/Labels/BallCounter.set_text("Balls: "+str(number_of_balls))
-	# Note: Both get_node("Node") and $Node do the same thing
+	var temp_ball_list = get_node("BallList").get_children()#
+	var balls_not_queued_for_deletion := 0 
+	
+	for ball in temp_ball_list:
+		if ball.is_queued_for_deletion() == false:
+			balls_not_queued_for_deletion += 1
+			
+	$UI/MarginContainer/Labels/BallCounter.set_text("Balls: "+str(balls_not_queued_for_deletion))
 	
 func update_brick_counter():
-	$UI/MarginContainer/Labels/BrickCounter.set_text("Bricks: "+str(number_of_bricks_alive))
+	var temp_brick_list = get_node("BrickList").get_children()
+	var bricks_not_queued_for_deletion := 0
 	
+	for brick in temp_brick_list:
+		if brick.is_queued_for_deletion() == false:
+			bricks_not_queued_for_deletion += 1
+	$UI/MarginContainer/Labels/BrickCounter.set_text("Bricks: "+str(bricks_not_queued_for_deletion))
+	
+## HACK: I don't know if this is the most efficent way to do this, but it works well enough.
 
-func _on_ball_timer_timeout():	
+func _on_ball_timer_timeout():
 	## 2) Creates a new instance of the ball
 	var ball = ball_scene.instantiate() 
 	var random_x_position = rng.randf_range(100, 500)
@@ -78,8 +93,7 @@ func create_level(level: Level):
 		assert(false, "Less than 1 brick per row isn't possible to display.")
 	
 	## 2) and 3)
-	number_of_bricks_alive = 0
-	
+
 	var starting_x_coordinate : float = middle_of_screen_x_axis	
 	var offset_x : float = level.bricks_per_row - 1
 	var per_brick_offset_x = (brick_length / 2) + (level.spacing_between_rows / 2) 
@@ -103,7 +117,6 @@ func create_level(level: Level):
 			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
 			new_brick.brick_destroyed.connect(on_brick_destroyed)
 			$BrickList.add_child(new_brick)
-			number_of_bricks_alive += 1
 			current_x_corrdinate += brick_length + level.spacing_between_rows
 		
 		current_x_corrdinate = starting_x_coordinate
@@ -119,16 +132,13 @@ func create_level(level: Level):
 	update_brick_counter()
 	
 	## TODO: Make this look less of a nightmare
-	
 	## TODO: Add a logo
 	
 	
 func on_brick_destroyed(worth_in_points):
-	number_of_bricks_alive -= 1
 	update_brick_counter()
 	increase_score(worth_in_points)
-	if number_of_bricks_alive <= 0:
-		print("GAME OVER")
+
 
 ## NOTE: Because queue_free() only marks the brick for deletion when its safe to do so,
 ## $BrickList.get_child_count() still counts bricks that will be deleted next frame.

@@ -48,7 +48,6 @@ func collision_with_player(collision):
 func collision_with_bottom_wall(collision):
 	queue_free()
 	## FIXME: This should only happen when the ball has FULLY left the screen
-	## FIXME: The ball counter isn't updating
 	
 func basic_reflect_collision(collision):
 	var reflect = collision.get_remainder().bounce(collision.get_normal())
