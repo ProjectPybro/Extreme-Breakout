@@ -15,6 +15,8 @@
 #### Font: Rainy Hearts: https://www.dafont.com/rainyhearts.font
 #### Helped me with the Visibility Notifier: https://www.youtube.com/watch?v=P4AKsYAscD8
 
+#### Aseprite Tutorial: https://www.youtube.com/watch?v=Ep-_nJNHPc4&t=24s
+
 
 #### Why you should normalized the ball vector: https://www.youtube.com/watch?v=DXZarwDz5VY
 
