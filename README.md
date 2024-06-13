@@ -13,6 +13,8 @@
 #### Brick Level Maker was inspired by: https://www.youtube.com/watch?v=4rWW2uvsziM
 #### Brick breaking mechanic also taken from that.
 #### Font: Rainy Hearts: https://www.dafont.com/rainyhearts.font
+#### Helped me with the Visibility Notifier: https://www.youtube.com/watch?v=P4AKsYAscD8
+
 
 #### Why you should normalized the ball vector: https://www.youtube.com/watch?v=DXZarwDz5VY
 

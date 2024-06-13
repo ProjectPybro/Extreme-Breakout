@@ -29,8 +29,9 @@ func _physics_process(delta):
 		return
 	
 	if collision.get_collider().name == "BottomWall":
-		collision_with_bottom_wall(collision)
 		return
+		## This causes the ball to not reflect off the bottom wall and just keep going
+		## Only works if the ball doesn't collide with that mask.
 	
 	elif collision.get_collider().name == "Player":
 		collision_with_player(collision)
@@ -41,14 +42,16 @@ func _physics_process(delta):
 	
 	basic_reflect_collision(collision)
 	
+	
 func collision_with_player(collision):
 	velocity = position - collision.get_collider().find_child("Anchor").get_global_position()
 	## The anchor just stops me having to do complex maths while still giving decent results
-	
-func collision_with_bottom_wall(collision):
+
+
+func _ball_no_longer_visable_on_screen():
 	queue_free()
-	## FIXME: This should only happen when the ball has FULLY left the screen
-	
+
+
 func basic_reflect_collision(collision):
 	var reflect = collision.get_remainder().bounce(collision.get_normal())
 	velocity = velocity.bounce(collision.get_normal())

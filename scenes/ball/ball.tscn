@@ -19,3 +19,9 @@ metadata/_edit_lock_ = true
 [node name="BallCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ug2yf")
 debug_color = Color(0.988235, 0, 0.32549, 0.419608)
+
+[node name="BallVisibleOnScreen" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(4.17233e-07, 4.17233e-07)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="screen_exited" from="BallVisibleOnScreen" to="." method="_ball_no_longer_visable_on_screen"]
