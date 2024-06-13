@@ -87,3 +87,6 @@ func basic_reflect_collision(collision):
 	## TODO: Update README with bounce		
 	## TODO: Add Rotation to the Balls?
 	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
+	
+	## BUG: When two balls collide, sometimes the ball being hit wont register it. 
+	## This happens most when they collide perpendicular
