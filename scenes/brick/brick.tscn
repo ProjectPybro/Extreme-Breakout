@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7n2mnt8qiqs1"]
 
 [ext_resource type="Script" path="res://scenes/brick/brick.gd" id="1_6klng"]
-[ext_resource type="Texture2D" uid="uid://88xmx8t8ec5a" path="res://textures/brick.png" id="1_8345w"]
+[ext_resource type="Texture2D" uid="uid://h6bsc4knsn4q" path="res://textures/base_brick_design.png" id="2_5h0ds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3ily"]
 size = Vector2(64, 32)
@@ -12,8 +12,8 @@ collision_mask = 10
 script = ExtResource("1_6klng")
 
 [node name="BrickSprite" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_8345w")
+scale = Vector2(4, 4)
+texture = ExtResource("2_5h0ds")
 
 [node name="BrickCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r3ily")
