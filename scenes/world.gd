@@ -14,6 +14,9 @@ func _ready():
 	update_ball_counter()
 	update_brick_counter()
 	
+	Global.ball_deleted.connect(on_ball_deleted)
+	Global.brick_destroyed.connect(on_brick_destroyed)
+	
 	# Basic Level 1
 	var level_1 = Level.new() ## Crashes without the .new()
 	level_1.level_number = 1
@@ -36,7 +39,7 @@ func get_score():
 	return score
 	
 func update_ball_counter():
-	var temp_ball_list = get_node("BallList").get_children()#
+	var temp_ball_list = get_node("BallList").get_children()
 	var balls_not_queued_for_deletion := 0 
 	
 	for ball in temp_ball_list:
@@ -116,7 +119,6 @@ func create_level(level: Level):
 		for row in (level.bricks_per_row - bricks_in_row_offset):
 			var new_brick = brick_scene.instantiate()
 			new_brick.set_position(Vector2(current_x_corrdinate, current_y_corrdinate))
-			new_brick.brick_destroyed.connect(on_brick_destroyed)
 			$BrickList.add_child(new_brick)
 			current_x_corrdinate += brick_length + level.spacing_between_rows
 		
@@ -137,6 +139,8 @@ func create_level(level: Level):
 func on_brick_destroyed(worth_in_points):
 	update_brick_counter()
 	increase_score(worth_in_points)
-	
-	
+
+func on_ball_deleted():
+	update_ball_counter()
+
 ## TODO: Start making versions in the Godot Project. Think about what you want for the 1.0 release.

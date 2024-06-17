@@ -50,6 +50,7 @@ func collision_with_player(collision):
 
 func _ball_no_longer_visable_on_screen():
 	queue_free()
+	Global.ball_deleted.emit()
 
 
 func basic_reflect_collision(collision):

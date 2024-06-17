@@ -1,8 +1,6 @@
 extends StaticBody2D
 class_name Brick
 
-signal brick_destroyed
-
 @export var health = 1
 var worth_in_points = 1
 
@@ -23,7 +21,7 @@ func remove_health():
 	health -= 1
 	if health <= 0:
 		queue_free()
-		brick_destroyed.emit(worth_in_points)
+		Global.brick_destroyed.emit(worth_in_points)
 
 
 ## TODO: Add a respawning mechanic
