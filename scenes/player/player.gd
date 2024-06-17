@@ -7,7 +7,7 @@ extends CharacterBody2D
 func _ready():
 	set_physics_process(true)
 	var screen_width = get_viewport().get_visible_rect().size[0]
-	position = Vector2(screen_width/2 , 300)
+	position = Vector2(screen_width/2 , 330)
 	
 			
 func _physics_process(delta):
