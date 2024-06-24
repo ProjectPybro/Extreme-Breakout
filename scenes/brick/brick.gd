@@ -8,7 +8,7 @@ class_name Brick
 func _ready():
 	$BrickSprite.set_frame(4)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frzame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
