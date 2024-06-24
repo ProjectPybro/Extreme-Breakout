@@ -16,6 +16,7 @@ func _ready():
 	
 	Global.ball_deleted.connect(on_ball_deleted)
 	Global.brick_destroyed.connect(on_brick_destroyed)
+	Global.add_points.connect(on_add_points)
 	
 	# Basic Level 1
 	var level_1 = Level.new() ## Crashes without the .new()
@@ -136,11 +137,13 @@ func create_level(level: Level):
 	
 	## TODO: Make this look less of a nightmare
 	
-func on_brick_destroyed(worth_in_points):
+func on_brick_destroyed():
 	update_brick_counter()
-	increase_score(worth_in_points)
 
 func on_ball_deleted():
 	update_ball_counter()
+
+func on_add_points(value):
+	increase_score(value)
 
 ## TODO: Start making versions in the Godot Project. Think about what you want for the 1.0 release.

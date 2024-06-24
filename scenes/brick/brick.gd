@@ -2,7 +2,6 @@ extends StaticBody2D
 class_name Brick
 
 @export var health = 5
-var worth_in_points = 1
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,9 +18,11 @@ func remove_health():
 		return ## I think this fixes a bug where the brick counter would go negative
 		
 	health -= 1
+	Global.add_points.emit(1)
+	
 	if health <= 0:
 		queue_free()
-		Global.brick_destroyed.emit(worth_in_points)
+		Global.brick_destroyed.emit()
 		return
 	
 	$BrickSprite.set_frame($BrickSprite.get_frame() - 1)
