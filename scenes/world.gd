@@ -101,7 +101,7 @@ func create_level(level: Level):
 	var starting_x_coordinate : float = middle_of_screen_x_axis	
 	var offset_x : float = level.bricks_per_row - 1
 	var per_brick_offset_x = (brick_length / 2) + (level.spacing_between_rows / 2) 
-	# per_brick_offset_x: Saved for later to be used for offsetting every second column
+	# "per_brick_offset_x": Saved for later to be used for offsetting every second column
 	
 	offset_x *= per_brick_offset_x
 	starting_x_coordinate -= offset_x
