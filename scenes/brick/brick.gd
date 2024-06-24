@@ -29,7 +29,9 @@ func remove_health():
 	
 
 
-## TODO: Add a respawning mechanic
 ## TODO: Add different colored bricks with different hp's
 ## TODO: Brick Spawner should spawn different colored bricks
 ## TODO: Do we want composition or is that too much?
+
+## TODO: Add different levels. Either use the level generator, or create the levels by hand.
+## See: https://www.youtube.com/watch?v=FuIn_1aK7rM

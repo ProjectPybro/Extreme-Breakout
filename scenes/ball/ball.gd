@@ -87,9 +87,7 @@ func basic_reflect_collision(collision):
 
 	## BUG: Sometimes the balls collide for 2 frames in a row, which leads to weird stuttering effect
 	
-	## TODO: Update README with bounce		
 	## TODO: Add Rotation to the Balls?
-	## TODO: Balls should speed up on collison, all the way until a max speed (1000?)
 	
 	## BUG: When two balls collide, sometimes the ball being hit wont register it. 
 	## This happens most when they collide perpendicular

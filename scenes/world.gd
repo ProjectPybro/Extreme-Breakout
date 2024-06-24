@@ -5,7 +5,7 @@ var score := 0
 
 var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
-var rng = RandomNumberGenerator.new()
+var random_number_generator = RandomNumberGenerator.new()
 
 
 func _ready():
@@ -58,13 +58,12 @@ func update_brick_counter():
 			bricks_not_queued_for_deletion += 1
 	$UI/MarginContainer/Labels/BrickCounter.set_text("Bricks: "+str(bricks_not_queued_for_deletion))
 	
-## HACK: I don't know if this is the most efficent way to do this, 
-## but is more reliable than other methods.
+## HACK: I don't know if this is the most efficent way to do this, but its more reliable than other methods.
 
 func _on_ball_timer_timeout():
 	## 2) Creates a new instance of the ball
 	var ball = ball_scene.instantiate() 
-	var random_x_position = rng.randf_range(100, 500)
+	var random_x_position = random_number_generator.randf_range(100, 500)
 	ball.set_position(Vector2(random_x_position, 100))
 
 	## 3) Add ball to the scene tree
@@ -145,5 +144,7 @@ func on_ball_deleted():
 
 func on_add_points(value):
 	increase_score(value)
+	
+## TODO: Pause Screen, Main Menu Screen, Intro Screen.
 
 ## TODO: Start making versions in the Godot Project. Think about what you want for the 1.0 release.
