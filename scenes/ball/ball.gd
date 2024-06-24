@@ -1,9 +1,10 @@
 extends CharacterBody2D
 class_name Ball
 
-@export var start_speed = 100.0
-@export var current_speed = 0.0
-@export var max_speed = 500.0
+@export var start_speed := 100.0
+@export var current_speed := 0.0
+@export var increase_speed_per_hit := 10.0
+@export var max_speed := 500.0
 @export var starting_direction = Vector2.ZERO
 @export var velocity_watcher_normalized = Vector2.ZERO
 
@@ -39,6 +40,7 @@ func _physics_process(delta):
 	
 	elif collision.get_collider() is Brick:
 		collision.get_collider().call("remove_health")
+		current_speed = min(current_speed+increase_speed_per_hit, max_speed)
 	
 	basic_reflect_collision(collision)
 	
