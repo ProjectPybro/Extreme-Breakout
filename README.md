@@ -23,6 +23,15 @@
 #### Ball physics based on this: https://docs.godotengine.org/en/stable/tutorials/math/vector_math.html#reflection 
 #### If your making a breakout type game, use the inbuilt bounce() in Vector2 like I did!
 
+#### Helped a ton when trying to export to Browser like Itch.io: https://www.youtube.com/watch?v=RiQcnVgBhFE
+###### 1) Editor > Manage Export Templates. Select "Official Fithub Release Mirror" and "Download and Install"
+###### 2) Project > Export. Add > Web. Leave all the settings the same.
+###### 3) Put into a folder and save the files. Make sure its called "index.html".
+###### 4) Turn into a zip and upload to Itch. Remember to enable "SharedArrayBuffer support — (Experimental)" in Itch.
+
+###### Remember to tell github to ignore the builds folder. 
+###### Github Desktop > Repository  > Repository Settings > Ignore Files > type "builds/" (no "")
+
 ### Addons
 #### TODO Manager
 ##### https://godotengine.org/asset-library/asset/1327
