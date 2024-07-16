@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var regular_speed = 500 
-@export var slow_speed = 200
-@export var current_speed = regular_speed
+@export var regular_speed := 500 
+@export var slow_speed := 200
+@export var current_speed := regular_speed
 # Export allows me to change the speed during the editor
 
 # Called when the node enters the scene tree for the first time.

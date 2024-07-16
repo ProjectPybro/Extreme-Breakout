@@ -5,8 +5,8 @@ class_name Ball
 @export var current_speed := 0.0
 @export var increase_speed_per_hit := 10.0
 @export var max_speed := 500.0
-@export var starting_direction = Vector2.ZERO
-@export var velocity_watcher_normalized = Vector2.ZERO
+@export var starting_direction := Vector2.ZERO
+@export var velocity_watcher_normalized := Vector2.ZERO
 
 func _ready():
 	change_colour()

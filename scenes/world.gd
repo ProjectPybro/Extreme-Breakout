@@ -5,7 +5,7 @@ var score := 0
 
 var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
-var random_number_generator = RandomNumberGenerator.new()
+var random_number_generator := RandomNumberGenerator.new()
 
 
 func _ready():

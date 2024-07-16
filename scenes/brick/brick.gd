@@ -1,7 +1,7 @@
 extends StaticBody2D
 class_name Brick
 
-@export var health = 5
+@export var health := 5
 
 
 # Called when the node enters the scene tree for the first time.
