@@ -7,8 +7,10 @@ var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
 var random_number_generator := RandomNumberGenerator.new()
 
+@onready var pause_menu: Control = $PauseMenu
 
 func _ready():
+	pause_menu.hide()
 	
 	set_score(0)
 	update_ball_counter()
@@ -27,6 +29,15 @@ func _ready():
 	level_1.spacing_between_columns = 4
 	level_1.offset_every_second_column = true
 	create_level(level_1)
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("pause_game"):
+		if get_tree().paused == false:
+			pause_menu.show()
+			get_tree().paused = true
+		else:
+			pause_menu.hide()
+			get_tree().paused = false
 
 func set_score(value: int):
 	score = value

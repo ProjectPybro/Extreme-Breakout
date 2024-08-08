@@ -13,18 +13,18 @@ func _ready():
 	
 			
 func _physics_process(delta):
-	if Input.is_action_pressed("slow"):
+	if Input.is_action_pressed("paddle_slow"):
 		current_speed = slow_speed
 	
-	elif Input.is_action_just_released("slow"):
+	elif Input.is_action_just_released("paddle_slow"):
 		current_speed = regular_speed
 	
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("paddle_left"):
 		position += Vector2(-1, 0) * current_speed * delta
 
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("paddle_right"):
 		position += Vector2(1, 0) * current_speed * delta
-	
+
 	move_and_slide() # This deals with wall collision
 	
 	## BUG: Sometimes the ball can be dragged across the screen by the paddle if it hits a moving paddle

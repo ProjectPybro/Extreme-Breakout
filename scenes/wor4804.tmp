@@ -1,13 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccum6x0n1y1f4"]
+[gd_scene load_steps=10 format=3 uid="uid://ccum6x0n1y1f4"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
 [ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
-[ext_resource type="PackedScene" uid="uid://ocb6npak3gu0" path="res://scenes/pause_scene/pause_menu.tscn" id="2_vu6xs"]
 [ext_resource type="PackedScene" uid="uid://clhrr3xrukfb4" path="res://scenes/ui/ui.tscn" id="4_jirco"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
 [ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="5_8dhqr"]
-
-[sub_resource type="GDScript" id="GDScript_uqcbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
 size = Vector2(1040, 200)
@@ -22,29 +19,21 @@ size = Vector2(200, 360)
 size = Vector2(1040, 200)
 
 [node name="World" type="Node2D"]
-process_mode = 3
 script = ExtResource("1_6y0vp")
 
 [node name="Background" type="Sprite2D" parent="."]
-process_mode = 1
 position = Vector2(270, 80)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_mjr8b")
 metadata/_edit_lock_ = true
 
-[node name="PauseMenu" parent="." instance=ExtResource("2_vu6xs")]
-script = SubResource("GDScript_uqcbg")
-
 [node name="UI" parent="." instance=ExtResource("4_jirco")]
-process_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_tc2ca")]
-process_mode = 1
 position = Vector2(320, 340)
 collision_mask = 5
 
 [node name="BallList" type="Node2D" parent="."]
-process_mode = 1
 
 [node name="Ball" parent="BallList" instance=ExtResource("5_8dhqr")]
 position = Vector2(350, 50)
@@ -63,10 +52,8 @@ position = Vector2(330, 40)
 starting_direction = Vector2(-0.5, -1)
 
 [node name="BrickList" type="Node2D" parent="."]
-process_mode = 1
 
 [node name="Borders" type="Node2D" parent="."]
-process_mode = 1
 position = Vector2(740, 180)
 
 [node name="TopWall" type="StaticBody2D" parent="Borders"]
@@ -107,7 +94,6 @@ shape = SubResource("RectangleShape2D_k70vm")
 metadata/_edit_lock_ = true
 
 [node name="BallTimer" type="Timer" parent="."]
-process_mode = 1
 wait_time = 0.504
 one_shot = true
 
