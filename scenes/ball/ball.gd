@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Ball
 
+@export_group("Speed and Direction")
 @export var start_speed := 100.0
 @export var current_speed := 0.0
 @export var increase_speed_per_hit := 10.0
