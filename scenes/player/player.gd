@@ -10,15 +10,10 @@ func _ready():
 	set_physics_process(true)
 	var screen_width = get_viewport().get_visible_rect().size[0]
 	position = Vector2(screen_width/2 , 330)
+	Global.game_paused_revert_inputs.connect(revert_input_when_paused)
 	
 			
 func _physics_process(delta):
-	if Input.is_action_pressed("paddle_slow"):
-		current_speed = slow_speed
-	
-	elif Input.is_action_just_released("paddle_slow"):
-		current_speed = regular_speed
-	
 	if Input.is_action_pressed("paddle_left"):
 		position += Vector2(-1, 0) * current_speed * delta
 
@@ -29,3 +24,18 @@ func _physics_process(delta):
 	
 	## BUG: Sometimes the ball can be dragged across the screen by the paddle if it hits a moving paddle
 	## if it hits a moving paddle to the side. Probally move_and_slide's fault.
+
+func _input(event: InputEvent):
+	if event.is_action_pressed("paddle_slow"):
+		current_speed = slow_speed
+	
+	elif event.is_action_released("paddle_slow"):
+		current_speed = regular_speed
+	
+func revert_input_when_paused(): ## This stops keys being "stuck" when paused then unpaused
+	current_speed = regular_speed
+
+
+## NOTE: Process vs Input. Input called only when a key is pressed, physics called every frame.
+## Docs say if you want a one off action (like jump), use input. 
+## If you want a constant action (like move left while holding A), then use process or physics_process

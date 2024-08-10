@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccum6x0n1y1f4"]
+[gd_scene load_steps=11 format=3 uid="uid://ccum6x0n1y1f4"]
 
 [ext_resource type="Script" path="res://scenes/world.gd" id="1_6y0vp"]
 [ext_resource type="PackedScene" uid="uid://dvl13h7gnrykh" path="res://scenes/player/player.tscn" id="2_tc2ca"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://clhrr3xrukfb4" path="res://scenes/ui/ui.tscn" id="4_jirco"]
 [ext_resource type="Texture2D" uid="uid://dibbffv0us46m" path="res://textures/super_mario_galaxy_cover_art_background.jpg" id="4_mjr8b"]
 [ext_resource type="PackedScene" uid="uid://b6qmhjeopw0j8" path="res://scenes/ball/ball.tscn" id="5_8dhqr"]
-
-[sub_resource type="GDScript" id="GDScript_uqcbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07eh2"]
 size = Vector2(1040, 200)
@@ -33,7 +31,7 @@ texture = ExtResource("4_mjr8b")
 metadata/_edit_lock_ = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_vu6xs")]
-script = SubResource("GDScript_uqcbg")
+script = null
 
 [node name="UI" parent="." instance=ExtResource("4_jirco")]
 process_mode = 1

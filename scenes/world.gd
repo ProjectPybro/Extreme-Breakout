@@ -34,6 +34,7 @@ func _ready():
 func _input(event: InputEvent):
 	if event.is_action_pressed("pause_game"):
 		if get_tree().paused == false:
+			Global.game_paused_revert_inputs.emit()
 			pause_menu.show()
 			get_tree().paused = true
 		else:
