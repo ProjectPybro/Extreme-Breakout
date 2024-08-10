@@ -158,5 +158,8 @@ func on_add_points(value):
 	increase_score(value)
 	
 ## TODO: Pause Screen, Main Menu Screen, Intro Screen.
+## TODO: Pause Screen should work like Dome Keeper, an extention of the settings menu.
+## TODO: It should also not keep movements, so pressing right then pausing shouldn't hold the player going right.
+
 
 ## TODO: Start making versions in the Godot Project. Think about what you want for the 1.0 release.
