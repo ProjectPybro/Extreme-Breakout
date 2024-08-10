@@ -9,6 +9,7 @@ var random_number_generator := RandomNumberGenerator.new()
 
 @onready var pause_menu: Control = $PauseMenu
 
+
 func _ready():
 	pause_menu.hide()
 	
