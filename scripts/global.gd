@@ -11,4 +11,4 @@ https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.h
 signal ball_deleted
 signal brick_destroyed
 signal add_points(int)
-signal game_paused_revert_inputs
+signal game_unpaused_check_inputs
