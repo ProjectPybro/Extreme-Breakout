@@ -7,11 +7,13 @@ var ball_scene: PackedScene = load("res://scenes/ball/ball.tscn")
 var brick_scene: PackedScene = load("res://scenes/brick/brick.tscn")
 var random_number_generator := RandomNumberGenerator.new()
 
-@onready var pause_menu: Control = $PauseMenu
+@onready var pause_menu: Control = $Menus/PauseMenu
+@onready var settings_menu: Control = $Menus/SettingsMenu
 
 
 func _ready():
 	pause_menu.hide()
+	settings_menu.hide()
 	
 	set_score(0)
 	update_ball_counter()

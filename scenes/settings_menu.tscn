@@ -1,0 +1,104 @@
+[gd_scene load_steps=3 format=3 uid="uid://mydbm2lhgvq8"]
+
+[ext_resource type="Texture2D" uid="uid://cq41g44io53bs" path="res://textures/dev_worm/MenuBackground.png" id="1_dl32o"]
+[ext_resource type="Texture2D" uid="uid://dm08451mj2g3p" path="res://textures/godot_icon.svg" id="2_gtgbi"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -100.0
+offset_right = 80.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dl32o")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_right = 42.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 5
+
+[node name="PausedLabel" type="Label" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.745098, 0.996078, 1)
+theme_override_font_sizes/font_size = 32
+text = "PAUSE"
+
+[node name="MadeWithGodot" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MadeWithGodot"]
+layout_mode = 2
+
+[node name="GodotIcon" type="TextureRect" parent="MadeWithGodot/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_gtgbi")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="MadeWithGodot/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Made With Godot"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MadeWithGodot/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "(Version 4.2.1)
+"
+horizontal_alignment = 1
+
+[node name="Version" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -15.0
+offset_right = 42.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Version"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Version/VBoxContainer"]
+layout_mode = 2
+text = "v0.0.0"

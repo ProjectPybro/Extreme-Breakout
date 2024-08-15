@@ -32,6 +32,10 @@
 ###### Remember to tell github to ignore the builds folder. 
 ###### Github Desktop > Repository  > Repository Settings > Ignore Files > type "builds/" (no "")
 
+
+###### Temp added a texture from DevWorm's UI video. Will be replaced. https://www.youtube.com/watch?v=w0abIGbJntQ
+###### Settings menu based off Dome Keeper
+
 ### Addons
 #### TODO Manager
 ##### https://godotengine.org/asset-library/asset/1327
