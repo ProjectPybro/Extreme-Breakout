@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://mydbm2lhgvq8"]
 
 [ext_resource type="Texture2D" uid="uid://cq41g44io53bs" path="res://textures/dev_worm/MenuBackground.png" id="1_dl32o"]
-[ext_resource type="Texture2D" uid="uid://dm08451mj2g3p" path="res://textures/godot_icon.svg" id="2_gtgbi"]
+[ext_resource type="Texture2D" uid="uid://r6hueqga5egu" path="res://textures/godot_icon.svg" id="2_gtgbi"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -65,12 +65,13 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 
 [node name="GodotIcon" type="TextureRect" parent="MadeWithGodot/VBoxContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(120, 60)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_gtgbi")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="MadeWithGodot/VBoxContainer"]
 layout_mode = 2
